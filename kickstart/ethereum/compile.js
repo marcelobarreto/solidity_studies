@@ -34,5 +34,6 @@ const output = JSON.parse(solc.compile(JSON.stringify(input))).contracts;
 fs.ensureDirSync(buildPath);
 
 for (let contract in output) {
-  fs.outputJSONSync(path.resolve(buildPath, contract + '.json'), output[contract]);
+  const contractName = contract.replace('.sol', '');
+  fs.outputJSONSync(path.resolve(buildPath, contractName + '.json'), output[contract][contractName]);
 }

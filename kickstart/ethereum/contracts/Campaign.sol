@@ -6,7 +6,7 @@ contract CampaignFactory {
   address[] public deployedCampaigns;
 
   function createCampaign(uint minimum) public {
-    address newCampaign = address(new Campaign(minimum));
+    address newCampaign = address(new Campaign(minimum, msg.sender));
     deployedCampaigns.push(newCampaign);
   }
 
@@ -25,8 +25,8 @@ contract Campaign {
     mapping(address => bool) approvals;
   }
 
-  mapping(uint => Request) requests;
-  uint numRequests;
+  mapping(uint => Request) public requests;
+  uint public numRequests;
   address public manager;
   uint public minimumContribution;
   mapping(address => bool) public approvers;
@@ -37,8 +37,8 @@ contract Campaign {
     _;
   }
 
-  constructor(uint minimum) {
-    manager = msg.sender;
+  constructor(uint minimum, address creator) {
+    manager = creator;
     minimumContribution = minimum;
   }
 
@@ -49,7 +49,7 @@ contract Campaign {
   }
 
   function createRequest(string memory _description, uint _value, address _recipient) public restricted {
-    require(approvers[msg.sender]);
+    // require(approvers[msg.sender]);
 
     Request storage newRequest = requests[numRequests++];
     newRequest.description = _description;
