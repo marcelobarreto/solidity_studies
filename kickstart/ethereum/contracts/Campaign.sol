@@ -33,7 +33,7 @@ contract Campaign {
   uint public approversCount;
 
   modifier restricted() {
-    require(msg.sender == manager);
+    require(msg.sender == manager, "You need to be admin");
     _;
   }
 
@@ -43,14 +43,12 @@ contract Campaign {
   }
 
   function contribute() public payable {
-    require(msg.value > minimumContribution);
+    require(msg.value > minimumContribution, "Can't be less than minimum contribution");
     approvers[msg.sender] = true;
     approversCount++;
   }
 
   function createRequest(string memory _description, uint _value, address _recipient) public restricted {
-    // require(approvers[msg.sender]);
-
     Request storage newRequest = requests[numRequests++];
     newRequest.description = _description;
     newRequest.value = _value;
@@ -62,8 +60,8 @@ contract Campaign {
   function approveRequest(uint index) public {
     Request storage request = requests[index];
 
-    require(approvers[msg.sender]);
-    require(!request.approvals[msg.sender]);
+    require(approvers[msg.sender], "You need to be one approver");
+    require(!request.approvals[msg.sender], "You can't approve again");
 
     request.approvals[msg.sender] = true;
     request.approvalCount++;
@@ -71,8 +69,8 @@ contract Campaign {
 
   function finalizeRequest(uint index) public payable restricted {
     Request storage request = requests[index];
-    require(request.approvalCount > (approversCount / 2));
-    require(!request.complete);
+    require(request.approvalCount > (approversCount / 2), "You can't finalize the request yet");
+    require(!request.complete, "Request is already completed");
 
     payable(request.recipient).transfer(request.value);
     request.complete = true;

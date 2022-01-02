@@ -6,7 +6,8 @@
   "scripts": {
     "build": "node ./ethereum/compile.js",
     "deploy": "node ./ethereum/deploy.js",
-    "test": "mocha"
+    "test": "mocha",
+    "dev": "next dev"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +17,11 @@
     "fs-extra": "^10.0.0",
     "ganache-cli": "^6.12.2",
     "mocha": "^9.1.2",
+    "next": "^12.0.7",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.0.4",
     "solc": "^0.8.9",
     "web3": "^1.6.0"
   }
