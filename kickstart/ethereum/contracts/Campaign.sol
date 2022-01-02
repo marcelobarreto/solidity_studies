@@ -63,13 +63,13 @@ contract Campaign {
     Request storage request = requests[index];
 
     require(approvers[msg.sender]);
-    require(request.approvals[msg.sender]);
+    require(!request.approvals[msg.sender]);
 
     request.approvals[msg.sender] = true;
     request.approvalCount++;
   }
 
-  function finalizeRequest(uint index) public restricted {
+  function finalizeRequest(uint index) public payable restricted {
     Request storage request = requests[index];
     require(request.approvalCount > (approversCount / 2));
     require(!request.complete);
