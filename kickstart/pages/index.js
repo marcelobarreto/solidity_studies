@@ -13,15 +13,14 @@ const Page = ({ campaigns }) => {
   return (
     <div>
       <h3>Open Campaigns</h3>
+      <Button floated="right" content="Create Campaign" icon="add circle" primary />
       {renderCampaigns()}
-      <Button content="Create Campaign" icon="add circle" primary />
     </div>
   );
 };
 
 Page.getInitialProps = async () => {
   const campaigns = await factory.methods.getDeployedCampaigns().call();
-  console.log({ campaigns });
   return { campaigns };
 }
 

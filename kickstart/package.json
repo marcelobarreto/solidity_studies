@@ -7,6 +7,7 @@
     "build": "node ./ethereum/compile.js",
     "deploy": "node ./ethereum/deploy.js",
     "test": "mocha",
+    "start": "next dev",
     "dev": "next dev"
   },
   "keywords": [],
@@ -18,6 +19,7 @@
     "ganache-cli": "^6.12.2",
     "mocha": "^9.1.2",
     "next": "^12.0.7",
+    "next-routes": "^1.4.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "semantic-ui-css": "^2.4.1",

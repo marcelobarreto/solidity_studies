@@ -1,8 +1,18 @@
 // import App from 'next/app'
 import 'semantic-ui-css/semantic.min.css';
+import { Container } from 'semantic-ui-react';
+
+import Header from '../components/Header';
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <div id="main">
+      <Header />
+      <Container>
+        <Component {...pageProps} />
+      </Container>
+    </div>
+  );
 }
 
 // Only uncomment this method if you have blocking data requirements for
