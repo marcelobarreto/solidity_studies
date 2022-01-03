@@ -25,7 +25,7 @@ contract Campaign {
     mapping(address => bool) approvals;
   }
 
-  Request[] public requests;
+  mapping(uint => Request) public requests;
   uint public numRequests;
   address public manager;
   uint public minimumContribution;
@@ -80,13 +80,13 @@ contract Campaign {
     return (
       minimumContribution,
       address(this).balance,
-      requests.length,
+      numRequests,
       approversCount,
       manager
     );
   }
 
   function getRequestsCount() public view returns (uint) {
-    return requests.length;
+    return numRequests;
   }
 }

@@ -1,3 +1,3 @@
 # Last deployed contract address:
 
-*0x60a53b732B9ae0618c99bf9D1cfE713701A39E9B*
+*0xE28af96C6F07d61317AcF38Aced74399d06719fB*

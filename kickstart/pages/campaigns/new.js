@@ -41,7 +41,6 @@ const Page = () => {
       <Form.Field>
         <Label>Minimum contribution</Label>
         <Input
-          type="number"
           label="wei"
           labelPosition="right"
           value={minimumContribution}
