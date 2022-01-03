@@ -7,11 +7,11 @@
     "build": "node ./ethereum/compile.js",
     "deploy": "node ./ethereum/deploy.js",
     "test": "mocha",
-    "start": "next dev",
+    "start": "node ./server.js",
     "dev": "next dev"
   },
   "keywords": [],
-  "author": "",
+  "author": "Marcelo Barreto",
   "license": "ISC",
   "dependencies": {
     "@truffle/hdwallet-provider": "^1.5.1",

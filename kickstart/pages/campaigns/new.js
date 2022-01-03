@@ -3,6 +3,7 @@ import { Form, Input, Label, Button, Message } from 'semantic-ui-react';
 
 import factory from '../../ethereum/factory';
 import web3 from '../../ethereum/web3';
+import { Router } from '../../routes';
 
 const Page = () => {
   const [minimumContribution, setMinimunContribution] = useState(0);
@@ -21,6 +22,8 @@ const Page = () => {
 
       setMinimunContribution(0);
       setErrorMessage('');
+
+      Router.pushRoute('/');
     } catch (err) {
       setErrorMessage(err.message);
     }
