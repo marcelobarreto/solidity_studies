@@ -49,12 +49,13 @@ contract Campaign {
   }
 
   function createRequest(string memory _description, uint _value, address _recipient) public restricted {
-    Request storage newRequest = requests[numRequests++];
+    Request storage newRequest = requests[numRequests];
     newRequest.description = _description;
     newRequest.value = _value;
     newRequest.recipient = _recipient;
     newRequest.complete = false;
     newRequest.approvalCount = 0;
+    numRequests++;
   }
 
   function approveRequest(uint index) public {
